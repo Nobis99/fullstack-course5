@@ -14,15 +14,12 @@ function MsgController($scope) {
 
     $scope.Check_Dish = function () {
         var boxMsg = $scope.dishes_list;
-        //boxMsg = CheckComma(boxMsg);
-        //boxMsg = testing(boxMsg);
 
-        //$scope.countv = boxMsg;
-        $scope.TextBoxMsg = "function called";
-
-        
         if (!boxMsg) {
             $scope.TextBoxMsg = "Please enter data first";
+            $scope.fntColor = { "color":"red" };
+            $scope.boarderColor = { "border" : "solid 1px red" };
+
         }
         if (boxMsg) {
             var pList = boxMsg.split(',');
@@ -30,13 +27,16 @@ function MsgController($scope) {
 
             if (pList.length <= 3) {
                 $scope.TextBoxMsg = "Enjoy!";
+                $scope.fntColor = { "color":"green" };
+                $scope.boarderColor = { "border" : "solid 1px green" };
             }
             else {
                 $scope.TextBoxMsg = "Too much!";
+                $scope.fntColor = { "color":"green" };
+                $scope.boarderColor = { "border" : "solid 1px green" };
             }
         }
-        //$scope.TextBoxMsg = count;
-        $scope.countv = pList;
+        $scope.debugMessage = pList;
     };
 }
 

@@ -17,7 +17,7 @@
             <div class="form-group">
                  <input id="lunch-menu" type="text"
                  placeholder="list comma separated dishes you usually have for lunch"
-                 ng-model="dishes_list" ng-keyup="updating();"
+                 ng-model="dishes_list" ng-keyup="updating();" ng-style="boarderColor"
                  class="form-control">
                 *Do NOT consider an empty item, i.e., , , as an item towards to the count.
             </div>
@@ -25,9 +25,11 @@
              <button class="btn btn-default" ng-click="Check_Dish();">Check If Too Much</button>
          </div>
       </div>
-         <div class="form-group message">
-             {{TextBoxMsg}}
-            <br> {{countv}}
+         <div class="form-group message" >
+             <div ng-style="fntColor">
+                {{TextBoxMsg}}
+                <br> {{debugMessage}}
+             </div>
          </div>
     </div>
 
