@@ -4,10 +4,9 @@
 
 .controller('MsgController', MsgController);
 MsgController.$inject = ['$scope'];
-
     
 function MsgController($scope) {
-    
+
     $scope.updating = function() {
         var boxMsg = $scope.dishes_list;
         $scope.TextBoxMsg = boxMsg;
@@ -15,11 +14,20 @@ function MsgController($scope) {
 
     $scope.Check_Dish = function () {
         var boxMsg = $scope.dishes_list;
+        //boxMsg = CheckComma(boxMsg);
+        //boxMsg = testing(boxMsg);
+
+        //$scope.countv = boxMsg;
+        $scope.TextBoxMsg = "function called";
+
+        
         if (!boxMsg) {
             $scope.TextBoxMsg = "Please enter data first";
         }
         if (boxMsg) {
             var pList = boxMsg.split(',');
+            pList = CheckComma(pList);
+
             if (pList.length <= 3) {
                 $scope.TextBoxMsg = "Enjoy!";
             }
@@ -27,31 +35,18 @@ function MsgController($scope) {
                 $scope.TextBoxMsg = "Too much!";
             }
         }
-        //$scope.TextBoxMsg = boxMsg;
+        //$scope.TextBoxMsg = count;
+        $scope.countv = pList;
     };
 }
 
-function CheckComma (string) {
-    return 0;
+function CheckComma (y) {
+    for (var i=0; i < y.length; i++){ y[i] = y[i].trim(); }
+    y = y.filter(String);
+    return y;
 }
-    
-function firstController ($scope) {
-  $scope.dishes_list = "Kaner";
-    
-  $scope.displayNumberic = function(){
-      var totalNameValue = 0;
-      var totalNameValue = CalculateStringValue($scope.name);
-      $scope.totalValue = totalNameValue;
-      
-  };
-}
-    
-function CalculateStringValue(string) {
-    var totalStringValue = 0;
-    for (var i = 0; i < string.length; i++) {
-        totalStringValue += string.charCodeAt(i);
-    }
-    return totalStringValue;
+function testing(string){
+    return string;
 }
     
 })();
