@@ -16,24 +16,26 @@ function MsgController($scope) {
         var boxMsg = $scope.dishes_list;
 
         if (!boxMsg) {
-            $scope.TextBoxMsg = "Please enter data first";
-            $scope.fntColor = { "color":"red" };
-            $scope.boarderColor = { "border" : "solid 1px red" };
-
+            $scope.answer = { 
+                Name: "Please enter data first", 
+                fnt: { "color":"red" }, 
+                box : { "border" : "solid 1px red" }};
         }
         if (boxMsg) {
             var pList = boxMsg.split(',');
             pList = CheckComma(pList);
 
             if (pList.length <= 3) {
-                $scope.TextBoxMsg = "Enjoy!";
-                $scope.fntColor = { "color":"green" };
-                $scope.boarderColor = { "border" : "solid 1px green" };
+                $scope.answer = { 
+                    Name: "Enjoy!", 
+                    fnt: { "color":"green" }, 
+                    box : { "border" : "solid 1px green" }};
             }
             else {
-                $scope.TextBoxMsg = "Too much!";
-                $scope.fntColor = { "color":"green" };
-                $scope.boarderColor = { "border" : "solid 1px green" };
+                $scope.answer = { 
+                    Name: "Too much!", 
+                    fnt: { "color":"green" }, 
+                    box : { "border" : "solid 1px green" }};
             }
         }
         $scope.debugMessage = pList;
