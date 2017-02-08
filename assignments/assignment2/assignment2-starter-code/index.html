@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="Shopping">
   <head>
     <title>Shopping List Check Off</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .emptyMessage {
@@ -23,9 +25,9 @@
     </style>
   </head>
 <body>
-  <div class="container">
+  <div class="container" ng-controller="CartController">
   <h1>Shopping List Check Off</h1>
-
+      {{ name }}
   <div class="row">
 
     <!-- To Buy List -->
