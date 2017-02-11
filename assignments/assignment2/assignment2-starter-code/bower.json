@@ -1,0 +1,15 @@
+{
+  "name": "assignment2-starter-code",
+  "homepage": "https://github.com/Nobis99/fullstack-course5",
+  "authors": [
+    "Kane"
+  ],
+  "description": "assignment2 for singlepage app",
+  "main": "index.html",
+  "license": "none",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.1"
+  }
+}
