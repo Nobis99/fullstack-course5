@@ -1,33 +1,54 @@
 (function () {
-'use strict';
+    'use strict';
 
-var shoppinglist1 = [
-    "Milk","Chocolate","Peanut Butter","Donuts"
-];
+var app = angular.module('ShoppingListCheckOff',[])
+    .controller('ToBuyController', ToBuyController)
+    .controller('AlreadyBoughtController', AlreadyBoughtController)
+    .service('ShoppingListCheckOffService', ShoppingListCheckOffService)
 
-var shoppinglist2 = [
-{
-    name : "Milk",
-    quantity: "2"
-},
-{
-    name : "Donuts",
-    quantity : "100"
-},
-{
-    name : "Apples",
-    quantity : "12"
-}
-];
+    ToBuyController.$inject = ['ShoppingListCheckOffService'];
+    AlreadyBoughtController.$inject = [ 'ShoppingListCheckOffService' ];
     
-angular.module('Shopping',[])
-    .controller('CartController', CartController);
-    CartController.$inject = ['$scope'];
+    function ToBuyController(ShoppingListCheckOffService) {
+        var buyList = this;
+        buyList.items = ShoppingListCheckOffService.getShippingList();
+        buyList.bought = function(indexNumber) {
+            ShoppingListCheckOffService.moveItem(indexNumber);
+        };
+        buyList.presentList = ShoppingListCheckOffService.moretobuy();
+        
+    }   
+    function AlreadyBoughtController(ShoppingListCheckOffService) {
+        var Bought = this;
+        Bought.items = ShoppingListCheckOffService.getBought();
+        Bought.finishedList = ShoppingListCheckOffService.moretobuy();
 
-    function CartController($scope) {
-        $scope.shoppinglist1 = shoppinglist1;
-        $scope.shoppinglist2 = shoppinglist2;
         
     }
-    
+        
+    function ShoppingListCheckOffService() {
+        var service = this;
+        var purchased = [];
+        var shoppingList = [
+            { name : "Milk", quantity: "2" },
+            { name : "Donuts", quantity : "100"},
+            { name : "Apples", quantity : "12"},
+            { name : "Beer", quantity : "6"},
+            { name : "Cookies", quantity : "12" }
+        ]; 
+        service.moretobuy = function(){
+            //todo - check length of array to change value
+            return true;
+        };
+        service.moveItem = function(indexNumber) {
+            purchased.push(shoppingList[indexNumber]);
+            shoppingList.splice(indexNumber, 1);
+        };
+        service.getShippingList = function() {
+            return shoppingList;
+        };
+        service.getBought = function(){
+          return purchased;  
+        };
+    }
 })();

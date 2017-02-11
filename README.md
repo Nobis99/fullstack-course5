@@ -11,3 +11,5 @@ As part of this course we developed a *real* website for a *real* client. Below 
 
 ## Assignments
    - [Assignment 1](https://nobis99.github.io/fullstack-course5/assignments/assignment1/assignment1-starter-code/index.html)
+
+   - [Assignment 2](https://nobis99.github.io/fullstack-course5/assignments/assignment2/assignment2-starter-code/index.html)
