@@ -15,6 +15,7 @@ var app = angular.module('ShoppingListCheckOff',[])
         buyList.bought = function(indexNumber) {
             ShoppingListCheckOffService.moveItem(indexNumber);
             buyList.presentList = ShoppingListCheckOffService.moretobuy();
+            ShoppingListCheckOffService.somethingbought = true;
         };
         buyList.presentList = ShoppingListCheckOffService.moretobuy();
         
@@ -22,15 +23,13 @@ var app = angular.module('ShoppingListCheckOff',[])
     function AlreadyBoughtController(ShoppingListCheckOffService) {
         var bought = this;
         bought.items = ShoppingListCheckOffService.getBought();
-        bought.finishedList = true;
-        
-        //$scope.$watch('bought.finishedList', function(){ $scope.finishedList = true; });
-        console.log(bought.finishedList);   
+        bought.somethingbought = ShoppingListCheckOffService.somethingbought;
+        //probably should be a $watch here
     }
-        
     function ShoppingListCheckOffService() {
         var service = this;
         var purchased = [];
+        service.somethingbought = false;
         var shoppingList = [
             { name : "Milk", quantity: "2" },
             { name : "Donuts", quantity : "100"},
